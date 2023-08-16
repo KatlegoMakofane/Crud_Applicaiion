@@ -1,0 +1,39 @@
+.img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid blue;
+    z-index: auto;
+  }
+  .card {
+    border: 3px red solid;
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .table-primasry {
+    border: 5px solid red
+  }
+  .d-flex{
+    justify-content: space-evenly;
+    font-size: 30PX;
+    width: 80px;
+  }
+  .d-flex span{
+    width: 200px;
+    height: 50px;
+ background-color: aqua;
+display: inline-flex;
+margin-left: 150px;
+right: 0px;
+  }
+  .tr{
+    width: 80px;
+    height: 50px;
+    font-size: 30PX;
+   
+    margin-top: 140px;
+    background-color: red;
+  }
+  
