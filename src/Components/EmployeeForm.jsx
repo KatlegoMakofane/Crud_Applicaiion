@@ -6,13 +6,14 @@ import { useForm } from "./../hooks/useForm";
 import { addEmployee, getEmployeeById } from "../service/localStorage";
 import { editEmployee } from "../service/localStorage";
 import "./EmployeeForm.css";
+import { AiFillPlusCircle } from 'react-icons/ai';
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [showAlert, setshowAlert] = useState(false);
   const [fileurl, setFileUrl] = useState("");
-
+  
   const handlePicture = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -24,15 +25,17 @@ const EmployeeForm = () => {
           };
          reader.readAsDataURL(file);
          }
-         console.log("THE DATA :"+fileurl)
-         localStorage.setItem('value',fileurl)
+        //  console.log("THE DATA :"+fileurl)
+        //  localStorage.setItem('value',fileurl)
   };
+
+  
   const { inputValues, handleInputChange, resetForm, setForm } = useForm({
+    
     name: "",
     email: "",
-    address: "",
-    phone: "",
-    image:localStorage.getItem("value")
+
+    // image:localStorage.getItem('value')
   })
 
   useEffect(() => {
@@ -47,50 +50,52 @@ const EmployeeForm = () => {
     e.preventDefault();
     id
       ? editEmployee(id, inputValues)
-      : addEmployee({ id: uuid(), ...inputValues });
+      : addEmployee({ id: uuid(), ...inputValues, fileurl});
     resetForm();
     setshowAlert(true);
     setTimeout(() => {
       setshowAlert(false);
     }, 2000);
   };
-
+  const UploadFiles = () => {
+    document.getElementById('selectFile').click();
+  }
   return (
     <div>
       <div className="d-flex my-5 justify-content-between">
         <button
           type="button"
-          className="btn btn-outline-secondary"
+          className="btn2 btn-outline-secondary"
           onClick={() => navigate("/")}
         >
           Back
         </button>
-        <h1 className="text-center">{id ? "Edit" : "Add new"} MEMBER</h1>
+       
         <div />
       </div>
 
       <div className="card border-primary p-5 m-5">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Image</label>
+           
             <div>
-              <img src={fileurl} className="img"  alt="" />
+            <label onClick={UploadFiles}><AiFillPlusCircle /></label>
+              <img src={fileurl} className="img1"  alt=""  />
             </div>
+            
             <input
              
-             
-              name="fileurl"
+             name="fileurl"
               type="file"
               className="=form-control"
               value={inputValues.fileurl}
-              id="inputValid"
+              id='selectFile'
               onChange={handlePicture}
-            />
+              style={{ display: "none" }}
+              ></input>
           </div>
           <div className="form-group">
-            <label className="form-label mt-2" htmlFor="inputValid">
-              Name
-            </label>
+            
             <input
               name="name"
               type="text"
@@ -98,13 +103,12 @@ const EmployeeForm = () => {
               onChange={handleInputChange}
               className="form-control"
               id="inputValid"
+              placeholder="Full Names"
             />
           </div>
 
           <div className="form-group">
-            <label className="form-label mt-2" htmlFor="inputValid">
-              TITLE
-            </label>
+           
             <input
               name="email"
               type="text"
@@ -112,6 +116,7 @@ const EmployeeForm = () => {
               onChange={handleInputChange}
               className="form-control"
               id="inputValid"
+              placeholder="Job title"
             />
           </div>
 
@@ -144,7 +149,7 @@ const EmployeeForm = () => {
           </div> */}
 
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-outline-primary btn-block">
+            <button type="submit" className="btn1 btn-outline-primary btn-block">
               {id ? "Edit" : "Add"} Member
             </button>
           </div>
