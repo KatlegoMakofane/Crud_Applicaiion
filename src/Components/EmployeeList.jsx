@@ -12,7 +12,7 @@ const EmployeeList = () => {
     }, []);
   return (
     <div>
-        <h1 className='my-5 texter-center'>Manage Members</h1>
+        
         <button
                             className="btn btn-outline-secondary my-2 my-sm-0"
                             onClick={() => navigate("/create-employee")}
