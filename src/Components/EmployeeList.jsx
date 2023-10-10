@@ -34,7 +34,9 @@ const EmployeeList = () => {
                         </table>
                     </div>
                 ) : (
+                    <div  className='Member__container1'>
                     <h3 className="text-center">No Members</h3>
+                    </div>
                 )
             }
     </div>
