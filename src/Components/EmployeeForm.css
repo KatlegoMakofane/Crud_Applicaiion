@@ -28,6 +28,18 @@
   display: flex;
   justify-content: space-between;
 }
+.Member__container1{
+ 
+  background: #FFF;
+  box-shadow: 3px 3px 10px 0px black;
+  /* border:3px solid blue; */
+  margin: auto;
+  width: 626px;
+  height: 106px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .card {
   /* border: 3px red solid; */
   margin: 30px;
